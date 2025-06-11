@@ -1,22 +1,22 @@
-import { useSearch } from "@oramacloud/client/react";
-import { useEffect, useState } from "react";
-import { Game } from "./components/Game";
-import { Sidebar } from "./components/Sidebar";
+import { useEffect, useState } from "react"
+import { Game } from "./components/Game"
+import { Sidebar } from "./components/Sidebar"
+import { useSearch } from "@oramacloud/react-client"
 
 function App() {
-  const [selected, setSelected] = useState({});
-  const [term, setTerm] = useState("");
+  const [selected, setSelected] = useState({})
+  const [term, setTerm] = useState("")
   const { results } = useSearch({
     term,
     limit: 50,
     tolerance: 1,
-  });
+  })
 
   useEffect(() => {
     if (!term && results?.hits) {
-      setSelected(results.hits[0].document);
+      setSelected(results.hits[0].document)
     }
-  }, [term, results]);
+  }, [term, results])
 
   return (
     <>
@@ -29,7 +29,7 @@ function App() {
         {selected.title ? <Game selected={selected} /> : null}
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
