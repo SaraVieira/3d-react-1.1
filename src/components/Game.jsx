@@ -1,8 +1,6 @@
-import { Canvas } from "@react-three/fiber";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import { Scene } from "./Scene";
-import { Separator } from "./ui/separator";
+import { Button } from "./ui/button"
+import { Badge } from "./ui/badge"
+import { Separator } from "./ui/separator"
 
 export const Game = ({ selected }) => {
   return (
@@ -45,5 +43,5 @@ export const Game = ({ selected }) => {
         Play
       </Button>
     </div>
-  );
-};
+  )
+}
