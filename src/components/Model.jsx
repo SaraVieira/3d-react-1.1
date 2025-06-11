@@ -1,20 +1,20 @@
-import React, { useRef } from "react";
-import { useGLTF, useTexture } from "@react-three/drei";
-import { MeshPhysicalMaterial } from "three";
-import { useFrame } from "@react-three/fiber";
+import { useRef } from "react"
+import { useGLTF, useTexture } from "@react-three/drei"
+import { MeshPhysicalMaterial } from "three"
+import { useFrame } from "@react-three/fiber"
 
 export function Case(props) {
-  const { nodes, materials } = useGLTF("/psx.glb");
-  const texture = useTexture(props.cover);
+  const { nodes, materials } = useGLTF("/psx.glb")
+  const texture = useTexture(props.cover)
   const coverMaterial = new MeshPhysicalMaterial({
     map: texture,
-  });
-  const gameCase = useRef();
+  })
+  const gameCase = useRef()
   useFrame(({ clock }) => {
     if (gameCase.current) {
-      gameCase.current.rotation.y = clock.getElapsedTime() / 2;
+      gameCase.current.rotation.y = clock.getElapsedTime() / 2
     }
-  });
+  })
   return (
     <group {...props} dispose={null} ref={gameCase}>
       <mesh
@@ -49,7 +49,7 @@ export function Case(props) {
         material={materials["5521_playstation-one-psx-prev.001"]}
       />
     </group>
-  );
+  )
 }
 
-useGLTF.preload("/psx.glb");
+useGLTF.preload("/psx.glb")

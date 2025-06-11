@@ -8,30 +8,30 @@ export function FPSLimiter({ fps }) {
   const frameloop = useThree((state) => state.frameloop);
 
   useLayoutEffect(() => {
-    const initFrameloop = get().frameloop;
+    const initFrameloop = get().frameloop
 
     return () => {
-      set({ frameloop: initFrameloop });
-    };
-  }, []);
+      set({ frameloop: initFrameloop })
+    }
+  }, [get, set])
 
   useFrame((state) => {
-    if (state.get().blocked) return;
-    state.set({ blocked: true });
+    if (state.get().blocked) return
+    state.set({ blocked: true })
 
     setTimeout(() => {
-      state.set({ blocked: false });
+      state.set({ blocked: false })
 
-      state.advance();
-    }, Math.max(0, 1000 / fps - state.clock.getDelta()));
-  });
+      state.advance()
+    }, Math.max(0, 1000 / fps - state.clock.getDelta()))
+  })
 
   useEffect(() => {
     if (frameloop !== "never") {
-      set({ frameloop: "never" });
-      advance();
+      set({ frameloop: "never" })
+      advance()
     }
-  }, [frameloop]);
+  }, [frameloop, advance, set])
 
   return null;
 }
