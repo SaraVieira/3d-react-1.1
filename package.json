@@ -44,5 +44,5 @@
     "tailwindcss": "^4.1.10",
     "vite": "^6.3.5"
   },
-  "engines": {"node": 20}
+  "engines": {"node": "21"}
 }
